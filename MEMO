@@ -1,0 +1,53 @@
+PHP 7.4.1
+Laravel Framework 7.29.3
+
+# Docker起動
+docker-compose up -d
+
+# コンテナ停止
+docker-compose stop
+
+# コンテナ内にログイン
+docker-compose exec vuesplash_web bash
+
+# Laravelのインストール
+composer create-project --prefer-dist "laravel/laravel=7.*" .
+
+# 開発用サーバーの立ち上げ(コンテナ内から)
+php artisan serve --host 0.0.0.0 --port 8081
+# もしくは(コンテナ外から)
+docker-compose exec vuesplash_web php artisan serve --host 0.0.0.0 --port 8081
+
+# npm istall
+docker-compose exec vuesplash_web npm install
+
+フロントエンドの準備
+npm install & npm install -D vue
+
+スタイルシート
+scss
+
+Laravel Mix
+JS Vue SCSS などをコンパイルする仕組み
+webpack.mix.jsを使用
+
+
+
+Vue Router
+npm install -D vue-router
+ルートコンポーネントを作成
+
+Historyモード
+
+(4) 認証APIお
+prefix (Laravel)
+- APIルートの作成
+- RouteServiceProvider.phpを編集
+- インメモリの SQLite を用いる
+- 会員登録 APIのI/O 設計
+
+laravel Auth のためにlaravel/uiが必要だが下記のようにver指定
+composer require laravel/ui:^2.4
+
+テスト
+./vendor/bin/phpunit --testdox

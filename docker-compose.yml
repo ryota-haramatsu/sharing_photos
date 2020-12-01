@@ -1,43 +1,18 @@
-version: "3.8"
-volumes:
-  php-fpm-socket:
-  db-store:
+version: "3"
 services:
-  app:
-    build:
-      context: .
-      dockerfile: ./infra/docker/php/Dockerfile
+  vuesplash_web:
+    build: .
     volumes:
-      - php-fpm-socket:/var/run/php-fpm
-      - ./backend:/work/backend
-    environment:
-      - DB_CONNECTION=mysql
-      - DB_HOST=db
-      - DB_PORT=3306
-      - DB_DATABASE=${DB_NAME:-laravel_local}
-      - DB_USERNAME=${DB_USER:-phper}
-      - DB_PASSWORD=${DB_PASS:-secret}
-
-  web:
-    build:
-      context: .
-      dockerfile: ./infra/docker/nginx/Dockerfile
+      - ./web:/var/www/html/vuesplash
     ports:
-      - ${WEB_PORT:-80}:80
-    volumes:
-      - php-fpm-socket:/var/run/php-fpm
-      - ./backend:/work/backend
-
-  db:
-    build:
-      context: .
-      dockerfile: ./infra/docker/mysql/Dockerfile
-    ports:
-      - ${DB_PORT:-3306}:3306
-    volumes:
-      - db-store:/var/lib/mysql
+      - 8081:8081
+      - 3000:3000
+  vuesplash_database:
+    image: postgres:11-alpine
+    restart: always
     environment:
-      - MYSQL_DATABASE=${DB_NAME:-laravel_local}
-      - MYSQL_USER=${DB_USER:-phper}
-      - MYSQL_PASSWORD=${DB_PASS:-secret}
-      - MYSQL_ROOT_PASSWORD=${DB_PASS:-secret}
+      POSTGRES_PASSWORD: secret
+    volumes:
+      - ./database:/var/lib/postgresql/data
+    ports:
+      - 5434:5432
