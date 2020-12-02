@@ -51,3 +51,10 @@ composer require laravel/ui:^2.4
 
 テスト
 ./vendor/bin/phpunit --testdox
+
+git push onew main　とかいうpush
+
+phpunitを使うときは
+APP_ENV
+DB_CONNECTION
+などを一致させておく必要がある
