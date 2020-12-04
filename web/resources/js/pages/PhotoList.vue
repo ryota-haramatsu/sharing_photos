@@ -1,3 +1,3 @@
 <template>
-    <h1>Photo List</h1>
+    <h1>コースリスト</h1>
 </template>

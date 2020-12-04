@@ -58,3 +58,8 @@ phpunitを使うときは
 APP_ENV
 DB_CONNECTION
 などを一致させておく必要がある
+
+https://www.hypertextcandy.com/vue-laravel-tutorial-authentication-part-2
+
+イベント修飾子
+https://jp.vuejs.org/v2/guide/events.html#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E4%BF%AE%E9%A3%BE%E5%AD%90

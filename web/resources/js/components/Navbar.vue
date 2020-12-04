@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar">
         <RouterLink class="navbar__brand" to="/">
-            Vuesplash
+            Japangly
         </RouterLink>
         <div class="navbar__menu">
             <div class="navbar__item">
