@@ -1,3 +1,5 @@
+import { getCookieValue } from './utils'
+
 window._ = require('lodash');
 
 /**
@@ -21,7 +23,20 @@ try {
 
 window.axios = require('axios');
 
+// ヘッダー：Ajaxリクエストであることを示すヘッダーを付与する
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+window.axios.interceptors.request.use(config => {
+    // クッキーからトークンを取り出してヘッダーに添付する
+    config.headers['X-XSRF-TOKEN'] = getCookieValue('XSRF-TOKEN')
+
+    return config
+})
+
+window.axios.interceptors.response.use(
+    response => response,
+    error => error.response || error
+)
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

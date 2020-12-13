@@ -1,5 +1,7 @@
 PHP 7.4.1
 Laravel Framework 7.29.3
+Vue.js + Vue Router + Vuex 
+https://www.hypertextcandy.com/vue-laravel-tutorial-authentication-part-4/
 
 # Docker起動
 docker-compose up -d
@@ -45,7 +47,7 @@ prefix (Laravel)
 - RouteServiceProvider.phpを編集
 - インメモリの SQLite を用いる
 - 会員登録 APIのI/O 設計
-
+x
 laravel Auth のためにlaravel/uiが必要だが下記のようにver指定
 composer require laravel/ui:^2.4
 
@@ -63,3 +65,37 @@ https://www.hypertextcandy.com/vue-laravel-tutorial-authentication-part-2
 
 イベント修飾子
 https://jp.vuejs.org/v2/guide/events.html#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E4%BF%AE%E9%A3%BE%E5%AD%90
+
+Vuexのインストール
+npm install --save-dev vuex
+
+ SPA における Web API の場合は <input> 要素を設置することができません。
+ →フォームではなくクッキーと HTTP ヘッダーを利用する方法です。クッキーからトークンを取り出して、
+ HTTP ヘッダーにそのトークンを含めてリクエストを送信しても CSRF チェックがかかります。
+
+ eyJpdiI6InJXSGh0UFAzdHh1RDN2US9BM0VmNGc9PSIsInZhbHVlIjoiY1ZVWDFOdkRUZFVBYTNJb3FxMDdjYmFGVUdaSmlZU0tVK2hITERlVC9xSTlCZnZ5dnc4NUFEdUVnWnA0dzJZWUEzTU9CTU1OV1VSdkkyZGZHNnlLVUFUU0xxVWVwUUl6VzFEYXl3MEQyL2dPbEo4TjNFSmM1cjM0R2VoZXcwUDIiLCJtYWMiOiI1OGU0NDMyYTMwMzE3Y2JmMmU0ZmZlZTk5OTVlNDY1NjRmZTAyODUwMmQxYjBkZjBiZjI1Y2VmMDBjZmVkYzUyIn0%3D
+
+- methodsをmethodにしていただけで反応しなかった
+- [Vue warn]: Error in v-on handler (Promise/async): "Error: Request failed with status code 422"のエラー
+
+- 認証状態を維持する
+リロード時に情報を維持することができていない
+
+actingAs($authUser)
+→現在認証済みのユーザーを指定できる
+
+assertJson()
+レスポンスが指定したJSONデータを持っていることを宣言
+
+this->status()：クライアント返答時のステータスコードを返す。正常なら200
+this->content()：コンテンツの取得
+this->setContent(値)：引数の値にコンテンツを変更する
+
+- ナビゲーションガード
+ログイン状態でもアドレスバーにURLを打ち込むとログインできてしまう
+
+- エラーハンドリング
+システムエラー
+バリデーションエラー
+認証エラー
+Not Found エラー

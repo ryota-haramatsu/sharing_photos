@@ -1,23 +1,36 @@
 <template>
     <nav class="navbar">
         <RouterLink class="navbar__brand" to="/">
-            Japangly
+            Vuesplash
         </RouterLink>
         <div class="navbar__menu">
-            <div class="navbar__item">
+            <div v-if="isLogin" class="navbar__item">
                 <button class="button">
                     <i class="icon ion-md-add"></i>
-                    写真を投稿
+                    Submit a photo
                 </button>
             </div>
-            <span class="navbar__item">
-                名前
+            <span v-if="isLogin" class="navbar__item">
+                {{ username }}
             </span>
-            <div class="navbar__item">
+            <div v-else class="navbar__item">
                 <RouterLink class="button button--link" to="/login">
-                ログイン / 新規登録
+                    Login / Register
                 </RouterLink>
             </div>
         </div>
     </nav>
 </template>
+
+<script>
+export default {
+    computed: {
+        isLogin() {
+            return this.$store.getters["auth/check"];
+        },
+        username() {
+            return this.$store.getters["auth/username"];
+        }
+    }
+};
+</script>
